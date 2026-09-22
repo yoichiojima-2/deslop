@@ -28,10 +28,6 @@ def main():
         sys.exit(p.stderr)
     outs = {json.loads(l)["id"]: json.loads(l) for l in p.stdout.splitlines() if l.strip()}
     errors = [(i, o["error"]) for i, o in outs.items() if "error" in o]
-    if errors and len(errors) == len(items) and len({e for _, e in errors}) == 1:
-        e = errors[0][1]
-        hint = " (TYPESAFE_API_KEY is not set)" if "API key" in e else ""
-        sys.exit(f"every page failed with the same error{hint}: {e}")
     for i, e in errors:
         print(f"error {i}: {e}", file=sys.stderr)
     scored = [it for it in items if "scores" in outs.get(it["id"], {})]
