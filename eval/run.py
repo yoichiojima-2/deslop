@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Score eval/labelled.jsonl with skill/deslop.py and print per-dimension accuracy against the labels.
+"""Score eval/labelled.jsonl with skills/deslop/deslop.py and print per-dimension accuracy against the labels.
 
   eval/run.py [--gate 0.85] [--show-misses]
 
@@ -10,7 +10,7 @@ never gated).
 import argparse, json, os, subprocess, sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-DESLOP = os.path.join(HERE, "..", "skill", "deslop.py")
+DESLOP = os.path.join(HERE, "..", "skills", "deslop", "deslop.py")
 SHIPPED = ["ad", "slop", "seo", "derivative"]
 EXPERIMENTAL = ["clickbait"]
 

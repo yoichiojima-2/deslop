@@ -1,0 +1,10 @@
+{
+  "name": "deslop",
+  "description": "Score fetched web pages for ads, slop, SEO and second-hand content (four probabilities per page) with TypeSafe Jev. Needs TYPESAFE_API_KEY.",
+  "version": "1.0.1",
+  "author": { "name": "Yoichi Ojima", "url": "https://github.com/yoichiojima-2" },
+  "homepage": "https://github.com/yoichiojima-2/deslop",
+  "repository": "https://github.com/yoichiojima-2/deslop",
+  "license": "MIT",
+  "keywords": ["skill", "web", "seo", "slop", "typesafe", "jev", "research"]
+}

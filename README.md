@@ -3,7 +3,7 @@
 Score web pages for ads, slop, SEO and second-hand content. An agent skill built on [TypeSafe](https://docs.typesafe.ai) Jev: four probabilities per page, no verdict, the caller sets the thresholds.
 
 ```
-skill/deslop.py < pages.jsonl
+skills/deslop/deslop.py < pages.jsonl
 {"id": "a1", "url": "https://…", "scores": {"ad": 0.91, "slop": 0.12, "seo": 0.80, "derivative": 0.77}}
 ```
 
@@ -13,7 +13,7 @@ Try it on the bundled examples (get a key at [typesafe.ai](https://typesafe.ai))
 
 ```
 export TYPESAFE_API_KEY=...
-skill/deslop.py < skill/examples/pages.jsonl
+skills/deslop/deslop.py < skills/deslop/examples/pages.jsonl
 ```
 
 | Score | 1 means |
@@ -23,14 +23,21 @@ skill/deslop.py < skill/examples/pages.jsonl
 | `seo` | written for the ranking algorithm: keyword stuffing, listicle shape, query-echo headings |
 | `derivative` | restates other coverage without naming a source |
 
-Full definitions, how to read them together, and the consumer paragraph: [skill/SKILL.md](skill/SKILL.md).
+Full definitions, how to read them together, and the consumer paragraph: [skills/deslop/SKILL.md](skills/deslop/SKILL.md).
 
 ## Install
 
-The skill is the `skill/` directory, in the [agent skill](https://agentskills.io) format (a `SKILL.md` with frontmatter plus files). Copy it into your agent's skills directory and pin the version:
+As a Claude Code plugin:
 
 ```
-cp -r skill/ <your-repo>/.claude/skills/deslop/      # or wherever your agent reads skills
+/plugin marketplace add yoichiojima-2/deslop
+/plugin install deslop@deslop
+```
+
+For any other agent, the skill is the `skills/deslop/` directory, in the [agent skill](https://agentskills.io) format (a `SKILL.md` with frontmatter plus files). Copy it into your agent's skills directory and pin the version:
+
+```
+cp -r skills/deslop/ <your-repo>/.claude/skills/deslop/      # or wherever your agent reads skills
 ```
 
 Record `deslop vX.Y.Z @ <sha>` where you keep vendored versions. Re-sync on tagged releases only; when something is wrong downstream, open an issue here rather than patching the copy.
@@ -43,7 +50,7 @@ Runtime: Python 3.9+, no dependencies beyond the standard library.
 
 `eval/run.py` scores it and prints accuracy, precision and recall per dimension at a 0.5 cut, exiting non-zero when a shipped dimension falls under the gate (`--gate`, default 0.85). Run it after any change to `questions.json`.
 
-v1.0.0, 38 pages, 2026-09-22, two runs identical except one `slop` item that sat at 0.49 once:
+v1.0.0 (unchanged in v1.0.1), 38 pages, 2026-09-22, two runs identical except one `slop` item that sat at 0.49 once:
 
 | dimension | n | accuracy | precision | recall |
 | --- | --- | --- | --- | --- |
@@ -70,7 +77,7 @@ The most useful contribution is a page the scorer gets wrong: open an issue with
 ## Layout
 
 ```
-skill/            the skill: SKILL.md, questions.json, deslop.py, jev.py, examples/pages.jsonl
+skills/deslop/    the skill: SKILL.md, questions.json, deslop.py, jev.py, examples/pages.jsonl
 eval/             labelled.jsonl, run.py
 .github/workflows/eval.yml   runs the eval on push and monthly; needs the TYPESAFE_API_KEY secret
 ```

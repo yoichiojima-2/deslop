@@ -12,7 +12,7 @@ description: >-
 Four probabilities per page, no verdict. The caller decides what to drop.
 
 ```
-skill/deslop.py < pages.jsonl        # {"id": ..., "url": ..., "text": <page body>} per line
+skills/deslop/deslop.py < pages.jsonl        # {"id": ..., "url": ..., "text": <page body>} per line
 ```
 
 Output, one line per input, in order:
