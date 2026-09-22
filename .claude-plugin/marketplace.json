@@ -1,0 +1,17 @@
+{
+  "name": "deslop",
+  "owner": {
+    "name": "Yoichi Ojima",
+    "url": "https://github.com/yoichiojima-2"
+  },
+  "plugins": [
+    {
+      "name": "deslop",
+      "source": "./",
+      "description": "Score fetched web pages for ads, slop, SEO and second-hand content with TypeSafe Jev. Needs TYPESAFE_API_KEY.",
+      "version": "1.0.1",
+      "category": "productivity"
+    }
+  ],
+  "description": "deslop: page scores for ads, slop, SEO and second-hand content, for research agents."
+}

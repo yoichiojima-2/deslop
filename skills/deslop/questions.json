@@ -1,0 +1,42 @@
+{
+  "ad": {
+    "type": "noul",
+    "instructions": "Does this page exist to sell or promote something? Judge the page's purpose, not whether a product is mentioned.",
+    "criteria": {
+      "true": "A product pitch, affiliate roundup with buy links, sponsored post, press release, landing page, or a company announcement whose point is to make the reader want the product",
+      "false": "Reports, explains, documents or argues something; any product, company or price mentioned is incidental to what the page is about"
+    }
+  },
+  "slop": {
+    "type": "noul",
+    "instructions": "Does the body read as machine-generated filler rather than something a person wrote with something to say?",
+    "criteria": {
+      "true": "Uniform paragraph rhythm, hedged padding, generic 'in today's fast-paced world' openers, summary-plus-why-it-matters closers, no specific names, dates, numbers or first-hand detail",
+      "false": "Specific facts, uneven voice, first-hand observation, quotes with attribution, opinions the author could be wrong about"
+    }
+  },
+  "seo": {
+    "type": "noul",
+    "instructions": "Was this page written for a search-ranking algorithm rather than for a reader?",
+    "criteria": {
+      "true": "Keyword repeated where a person would use a pronoun, listicle shape with no reason to be a list, headings that echo search queries ('What is X?', 'Is X worth it?'), a long preamble before the answer, 'ultimate guide' or 'best X of YEAR' framing",
+      "false": "Written the way the author would explain it to a colleague: the keyword appears when needed, the structure follows the argument"
+    }
+  },
+  "derivative": {
+    "type": "noul",
+    "instructions": "Does this page restate other people's coverage or data without naming where it came from?",
+    "criteria": {
+      "true": "Summarises news, studies or documentation second-hand; 'reports say', 'experts believe', 'according to sources' with no named source, or a rewrite of an announcement with no link to the original",
+      "false": "The author is the actor, the publisher of the data, or a first-hand witness; or a reporter who names and links the primary sources"
+    }
+  },
+  "clickbait": {
+    "type": "noul",
+    "instructions": "Experimental, not graded in the shipped eval. Is the title or opening written to provoke a click that the body does not pay off?",
+    "criteria": {
+      "true": "Withheld subject ('this one trick', 'you won't believe'), a question the body answers with 'it depends', a number or claim in the title that the body walks back",
+      "false": "The title states what the page says; the body delivers it"
+    }
+  }
+}
