@@ -13,6 +13,16 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - run: python eval/run.py --show-misses
+      - name: eval
         env:
           TYPESAFE_API_KEY: ${{ secrets.TYPESAFE_API_KEY }}
+        run: |
+          if [ -z "$TYPESAFE_API_KEY" ]; then
+            if [ "${{ github.event_name }}" = "pull_request" ]; then
+              echo "::notice::TYPESAFE_API_KEY not available to this pull request; eval skipped"
+              exit 0
+            fi
+            echo "::error::TYPESAFE_API_KEY secret is not set (Settings > Secrets and variables > Actions)"
+            exit 1
+          fi
+          python eval/run.py --show-misses
