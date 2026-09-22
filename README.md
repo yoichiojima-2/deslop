@@ -9,6 +9,13 @@ skill/deslop.py < pages.jsonl
 
 Input is one page per line: `{"id", "url", "text"}` where `text` is the page body. Snippets and titles are refused (default floor 250 characters). Needs `TYPESAFE_API_KEY`.
 
+Try it on the bundled examples (get a key at [typesafe.ai](https://typesafe.ai)):
+
+```
+export TYPESAFE_API_KEY=...
+skill/deslop.py < skill/examples/pages.jsonl
+```
+
 | Score | 1 means |
 | --- | --- |
 | `ad` | exists to sell or promote: pitch, affiliate roundup, sponsored post, press release |
@@ -55,6 +62,10 @@ Read the numbers for what they are. The set was labelled by one person, so accur
 - Six Japanese pages is not a Japanese eval. Nothing in the set is in a third language.
 - Scores are per page; a good article with a sponsored box at the end scores as the article.
 - "Slop" is a recent coinage. If the word dates, the definition in SKILL.md is what the score means.
+
+## Contributing
+
+The most useful contribution is a page the scorer gets wrong: open an issue with the page body, the labels you would give it and why, and it goes into `eval/labelled.jsonl`. Pages in the set are written for it, not scraped, so rewrite the shape of the page you found rather than pasting it. Changes to `questions.json` need the eval table in this README updated from a fresh `eval/run.py`.
 
 ## Layout
 
