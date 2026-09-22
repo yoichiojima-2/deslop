@@ -1,6 +1,6 @@
 # deslop
 
-Score web pages for ads, slop, SEO and second-hand content. An agent skill built on [TypeSafe](https://docs.typesafe.ai) Jev: four probabilities per page, no verdict, the caller sets the thresholds.
+An agent skill (Claude Code plugin) that scores fetched web pages for ads, slop, SEO and second-hand content before the agent reads them. Built on [TypeSafe](https://docs.typesafe.ai) Jev: four probabilities per page, no verdict, the caller sets the thresholds.
 
 ```
 skills/deslop/deslop.py < pages.jsonl
